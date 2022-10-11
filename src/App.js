@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Weather from './components/Weather';
+
+const API_URL = 'https://api.openweathermap.org/data/2.5/weather?';
+const ICON_URL = 'http://openweathermap.org/img/wn/';
+const API_KEY = 'API_KEY_HERE';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  if (isLoading) {
+      return <p>Loading...</p>;
+    }
+    else {
+      return (
+        <div className="content">
+          <h3>Your position</h3>
+          <p>
+            Position:&nbsp;
+            {lat.toFixed(3)},
+            {lng.toFixed(3)}
+          </p>
+          <Weather lat={lat} lng={lng} />
+        </div>
+      );
+    }
 }
 
 export default App;
