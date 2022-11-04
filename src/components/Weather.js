@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import axios from 'axios';
+
 
 const API_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 const ICON_URL = 'http://openweathermap.org/img/wn/';

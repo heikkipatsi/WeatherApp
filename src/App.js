@@ -6,12 +6,15 @@ import Weather from './components/Weather';
 function App() {
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         setLat(position.coords.latitude);
         setLng(position.coords.longitude);
+        setIsLoading(false);
       }, (error) => {
         alert(error);
       })
@@ -20,6 +23,8 @@ function App() {
       alert('EI TOIMI!')
     }
   }, [])
+
+  
 
   if (isLoading) {
     return <p>Loading...</p>;
